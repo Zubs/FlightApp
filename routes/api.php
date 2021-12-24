@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccessTokenController;
 use App\Http\Controllers\FlightSearchController;
 use App\Http\Controllers\GetPriceController;
+use App\Http\Controllers\OrderFlightController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/init', AccessTokenController::class);
 Route::post('/search', FlightSearchController::class);
 Route::post('/price', GetPriceController::class);
+Route::post('/order', OrderFlightController::class);
