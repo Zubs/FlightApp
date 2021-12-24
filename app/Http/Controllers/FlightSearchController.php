@@ -55,7 +55,7 @@ class FlightSearchController extends Controller
     public function __invoke (Request $request, Client $client)
     {
         $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-        $access_token = 'v5ZXlshtteBTGn2bcmhWbxcPDHGa';
+        $access_token = 'FZA0VIFy51Wyyn8hsrvw1HF3hodz';
 
         $data = [
             'originDestinations' => [
