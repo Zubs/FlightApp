@@ -24,7 +24,7 @@ class AccessTokenController extends Controller
             ]);
 
             $response = $response->getBody();
-            $access_token = json_decode($response)->access_token;
+            $response = json_decode($response);
 
             return $response;
         } catch (GuzzleException $exception) {

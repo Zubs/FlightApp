@@ -164,7 +164,10 @@ class OrderFlightController extends Controller
                 'json' => $data
             ]);
 
-            return $response->getBody();
+            $response = $response->getBody();
+            $response = json_decode($response);
+
+            return $response;
         } catch (GuzzleException $exception) {
             return $exception->getMessage();
         }
