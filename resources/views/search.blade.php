@@ -41,11 +41,17 @@
                 </thead>
                 <tbody>
                     @foreach($flights as $flight)
-                        <tr>
+                        <tr onclick="document.getElementById('{{ 'form'.$flight->id }}').submit()">
                             <th scope="row">{{ $flight->id }}</th>
                             <td>{{ $flight->itineraries[0]->duration }}</td>
                             <td>{{ $flight->price->total }}</td>
                         </tr>
+
+                        <form action="/api/price" hidden id="{{ 'form' . $flight->id }}" method="POST">
+                            @csrf
+
+                            <input type="hidden" name="flight" value="{{ json_encode($flight) }}">
+                        </form>
                     @endforeach
                 </tbody>
             </table>
