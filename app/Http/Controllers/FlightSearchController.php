@@ -55,16 +55,25 @@ class FlightSearchController extends Controller
     public function __invoke (Request $request, Client $client)
     {
         $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-        $access_token = 'FZA0VIFy51Wyyn8hsrvw1HF3hodz';
+        $access_token = 'koNpIjgtkF2k0xJke8NCSCiG1AoL';
+
+        if (session('access_token')) {
+            $access_token = session('access_token');
+        } else {
+            $access_token = app('App\Http\Controllers\AccessTokenController')->__invoke($client)->access_token;
+            session(['access_token' => $access_token]);
+        }
+
+        return $access_token;
 
         $data = [
             'originDestinations' => [
                 [
                     'id' => 1,
-                    'originLocationCode' => 'BOS',
-                    'destinationLocationCode' => 'PAR',
+                    'originLocationCode' => $request['from'],
+                    'destinationLocationCode' => $request['to'],
                     'departureDateTimeRange' => [
-                        'date' => '2021-12-27'
+                        'date' => $request['date']
                     ]
                 ]
             ],

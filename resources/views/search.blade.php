@@ -3,7 +3,7 @@
 @section('content')
     <div class="card p-5">
         <h2 class="text-center">Search Flights</h2>
-        <form action="/" class="mt-3" method="POST">
+        <form action="/api/search" class="mt-3" method="POST">
             @csrf
 
             <div class="row">
