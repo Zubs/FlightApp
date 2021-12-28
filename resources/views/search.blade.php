@@ -30,7 +30,7 @@
         </form>
 
         @if(isset($flights) && count($flights) > 0)
-            <h2 class="text-center mt-5">Results</h2>
+            <h2 class="text-center mt-5">{{ count($flights) }} Results</h2>
             <table class="table">
                 <thead>
                 <tr>
@@ -42,9 +42,9 @@
                 <tbody>
                     @foreach($flights as $flight)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>10H10M</td>
-                            <td>482.55</td>
+                            <th scope="row">{{ $flight->id }}</th>
+                            <td>{{ $flight->itineraries[0]->duration }}</td>
+                            <td>{{ $flight->price->total }}</td>
                         </tr>
                     @endforeach
                 </tbody>
